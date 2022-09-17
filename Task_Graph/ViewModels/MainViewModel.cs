@@ -187,31 +187,41 @@ namespace Task_Graph.ViewModels
                 OnPropertyChanged(nameof(GraphsSeries));
 
             }
+           
+         
         }
 
         private void SetSettingsForGraph()
         {
-            var mapper = new LiveCharts.Configurations.CartesianMapper<int>()
-            .X((value, index) => index)
-            .Y((value) => value)
-            .Fill((v, i) =>
-            {
-                if (v == SelectedUser.MaxSteps) return Brushes.White;
-                else if (v == SelectedUser.MinSteps) return Brushes.Black;
-                else return Brushes.DarkViolet;
-            });
-          
-            LiveCharts.Charting.For<int>(mapper, SeriesOrientation.Horizontal);
 
-            GraphsSeries = new SeriesCollection();
-            var columnSeries = new ColumnSeries() { Values = new ChartValues<int>(), Title = "Steps" };
+           
+                var mapper = new LiveCharts.Configurations.CartesianMapper<int>()
+                 .X((value, index) => index)
+                 .Y((value) => value)
+                 .Fill((v, i) =>
+                 {
+                     if (SelectedUser != null)
+                     {
+                         if (v == SelectedUser.MaxSteps) return Brushes.White;
+                         else if (v == SelectedUser.MinSteps) return Brushes.Black;
+                         else return Brushes.DarkViolet;
+                     }
+                              return Brushes.DarkViolet;
+                 });
 
-            foreach (var val in CountSteps)
-            {
-                columnSeries.Values.Add(val);
-            }
+                LiveCharts.Charting.For<int>(mapper, SeriesOrientation.Horizontal);
 
-            this.GraphsSeries.Add(columnSeries);
+                GraphsSeries = new SeriesCollection();
+                var columnSeries = new ColumnSeries() { Values = new ChartValues<int>(), Title = "Steps" };
+
+                foreach (var val in CountSteps)
+                {
+                    columnSeries.Values.Add(val);
+                }
+
+                this.GraphsSeries.Add(columnSeries);
+         
+         
         }
 
         #endregion
