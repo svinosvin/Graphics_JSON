@@ -10,6 +10,7 @@ namespace Task_Graph.Models
     public class Day
     {
         #region properties
+
         public int Rank { get; set; }
         public string User { get; set; }
         public string Status { get; set; }
@@ -19,7 +20,9 @@ namespace Task_Graph.Models
 
 
         #region static_region
+
         private static List<Day> allDays { get; set; } = new List<Day>();
+
         public static List<Day> All() // get all Days and push them to usersDays
         {
 
@@ -32,6 +35,7 @@ namespace Task_Graph.Models
 
             return Day.allDays ?? new List<Day>();
         }
+
         public static void FullDays()
         {
             Day.ClearAll();
@@ -39,15 +43,18 @@ namespace Task_Graph.Models
             string[] files = Directory.GetFiles(@"Days", "*.json");
             FileGetter.SetInfoDays(files);
         }   
+
         public static void ClearAll()
         {
             Day.allDays.Clear();
 
         }
+
         public static void AddList(List<Day> days)
         {
             allDays.AddRange(days);
         }
+
         #endregion
     }
 }

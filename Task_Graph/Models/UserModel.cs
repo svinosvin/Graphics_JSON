@@ -9,6 +9,7 @@ namespace Task_Graph.Models
     public class UserModel
     {
         #region properties
+
         public string? Name { get; set; }
         public int? AvgSteps { get; set; }
         public int? MaxSteps { get; set; } 
@@ -24,14 +25,17 @@ namespace Task_Graph.Models
 
 
         #region methods
+
         public List<Day> GetDays()
         {
             return UserDays;
         }
+
         public void AddDay(Day day)
         {
             UserDays.Add(day);
         }
+
         public void FindValuesProps()
         {
             MaxSteps = (int)UserDays.Max(x => Convert.ToInt32(x.Steps));
@@ -43,15 +47,19 @@ namespace Task_Graph.Models
 
 
         #region static_region
+
         private static ICollection<UserModel> AllUser { get; set; } = new List<UserModel>();
+
         public static void ClearAll()
         {
             AllUser.Clear();
         }
+
         public static IEnumerable<UserModel> All()
         {
             return AllUser;
         }
+
         public static void CreateOrAddDay(Day day)
         {
             UserModel userModel = UserModel.GetUser(day.User);
@@ -68,12 +76,14 @@ namespace Task_Graph.Models
             userModel.AddDay(day);
 
         }
+
         private static UserModel? GetUser(string name)
         {
             List<UserModel> users = UserModel.All().ToList();
             return users.FirstOrDefault(x => x.Name == name);
 
         }
+
 
         #endregion
     }

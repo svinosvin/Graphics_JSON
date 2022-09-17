@@ -17,6 +17,7 @@ namespace Task_Graph.ViewModels
     public class MainViewModel : ViewModel
     {
         #region props
+
         public ObservableCollection<UserModel>? UserModels { get; set; }
         public ICollectionView UserView { get; set; }
 
@@ -48,6 +49,7 @@ namespace Task_Graph.ViewModels
             } 
         }
 
+
         private string inputText = "";
         public string InputText
         {
@@ -64,19 +66,24 @@ namespace Task_Graph.ViewModels
             }
         }
 
+
         #region graphProps
+
         public ChartValues<int> CountSteps { get; set; }
         public SeriesCollection GraphsSeries { get; set; }
 
         #endregion
 
+
         #endregion
+
         public MainViewModel()
         {
             PrepareFunc();
         }
 
         #region commands
+
         public ICommand PushIntoFile //Push user's data in file /json/xml/csv
         {
             get
@@ -102,6 +109,7 @@ namespace Task_Graph.ViewModels
             }
 
         } 
+
         public ICommand ChooseFiles //Choose Files to get data
         {
             get
@@ -117,6 +125,7 @@ namespace Task_Graph.ViewModels
             }
 
         } 
+
         public ICommand DefaultSettings //Default users data
         {
             get
@@ -131,14 +140,17 @@ namespace Task_Graph.ViewModels
 
         } 
 
+
         #endregion
 
         #region methods
+
         private void PrepareFunc()//
         {
             Day.FullDays();
             BindOperations();
         }
+
         private void BindOperations()
         {
             UserModels = new ObservableCollection<UserModel>(UserModel.All());
@@ -164,6 +176,7 @@ namespace Task_Graph.ViewModels
          }
 
         #region graphSettings
+
         private void RefreshGraph()
         {
             if (SelectedUser != null)
@@ -175,6 +188,7 @@ namespace Task_Graph.ViewModels
 
             }
         }
+
         private void SetSettingsForGraph()
         {
             var mapper = new LiveCharts.Configurations.CartesianMapper<int>()
@@ -201,6 +215,7 @@ namespace Task_Graph.ViewModels
         }
 
         #endregion
+
 
         #endregion
 
