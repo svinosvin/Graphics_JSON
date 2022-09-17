@@ -206,7 +206,7 @@ namespace Task_Graph.ViewModels
                          else if (v == SelectedUser.MinSteps) return Brushes.Black;
                          else return Brushes.DarkViolet;
                      }
-                              return Brushes.DarkViolet;
+                     return Brushes.DarkViolet;
                  });
 
                 LiveCharts.Charting.For<int>(mapper, SeriesOrientation.Horizontal);
