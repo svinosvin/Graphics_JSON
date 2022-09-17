@@ -1,20 +1,16 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using Task_Graph.Base;
 using Task_Graph.Base.Commands;
 using Task_Graph.Models;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Task_Graph.ViewModels
 {
